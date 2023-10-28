@@ -25,7 +25,7 @@ main {
 
 // Basic Styling (overrideable)
 .wp-block-shayna-prod-accessible-drawer {
-	background-color: lavender;
+
 
 	button#toggle-drawer {
 		font-size: 0.9375rem;
@@ -39,7 +39,9 @@ main {
 	}
 
 	& #sliding-drawer {
-		background-color: darkblue;
+		border: .125rem solid maroon;
+		background-color: white;
+		height: 100%;
 	}
 }
 
@@ -53,7 +55,7 @@ main {
 
 	// drawer open
 	&.is-open {
-		width: 720px;
+
 
 		& button#toggle-drawer {
 			float: left;
@@ -78,7 +80,7 @@ main {
 			display: flex;
 			flex-direction: row;
 			float: right;
-			border: 0.1rem solid black;
+			border: 0.125rem solid black;
 
 			& .sp-header-wrap {
 				flex-direction: column;
@@ -126,22 +128,22 @@ main {
 	// Media Queries
 	@media screen and (min-width: 1024px) {
 		// Desktop
-
+		width: 720px;
 		&.is-open { // drawer open
 			#sliding-drawer {
 				margin: 0 0 0 0;
-				padding: 0 0 0 0;
+				padding: 0.5rem;
 				width: calc(100% - $small-button-width - 2px);
 			}
 		}
 
 
 		&.is-closed { // drawer closed
-			#drawer {
-				button#toggle-drawer {
+			& #drawer {
+				& button#toggle-drawer {
 					right: 0;
 
-					:focus {
+					&:focus {
 						width: auto;
 					}
 				}
@@ -149,6 +151,69 @@ main {
 		}
 
 	}
+	@media screen and (min-width: 768px) and (max-width: 1024px) {
+		// Tablet
+
+		width: 720px;
+
+		// drawer open
+		&.is-open {
+			#sliding-drawer {
+				margin: 0;
+				padding: 0.5rem;
+				width: calc(100%);
+			}
+		}
+
+		// drawer closed
+		&.is-closed { // drawer closed
+			& #drawer {
+				& button#toggle-drawer {
+					right: 0;
+
+					&:focus {
+						width: auto;
+					}
+				}
+			}
+		}
+
+	}
+
+	@media screen and (max-width: 767px) {
+		// Mobile
+		width: calc(100%); // Modify this to take up entire screen.;
+
+		// drawer open
+		&.is-open {
+			& button#toggle-drawer {
+				display: none;
+			}
+
+			#sliding-drawer {
+				margin: 0;
+				padding: 0.5rem;
+				width: 100%;
+			}
+		}
+
+		// drawer closed
+		&.is-closed {
+			& #drawer {
+
+				& button#toggle-drawer {
+					right: 0;
+
+					&:focus {
+						width: auto;
+					}
+				}
+			}
+
+
+		}
+	}
+
 }
 
 
