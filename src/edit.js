@@ -42,7 +42,7 @@ export default function Edit({ attributes, setAttributes }) {
 							tagName="h1"
 						/>
 						<button
-							classname="sp-close"
+							className="sp-close"
 							onClick={handleToggle}
 							aria-label="Close Dialog"
 						>
