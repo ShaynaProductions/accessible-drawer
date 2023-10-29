@@ -1,13 +1,14 @@
 import { InnerBlocks, RichText, useBlockProps } from "@wordpress/block-editor";
 import "./editor.scss";
 import classNames from "classnames";
-import { useState } from "@wordpress/element";
+import { useEffect, useState } from "@wordpress/element";
 
 export default function Edit({ attributes, setAttributes }) {
-	const { title } = attributes;
+	const { buttonText, title } = attributes;
 	const [show, setShow] = useState(true);
 	const [preview, setPreview] = useState(false);
-	const [collapseState, setCollapseState] = useState(true);
+	const [collapseState, setCollapseState] = useState(false);
+	const [showButtonText, setShowButtonText] = useState(true);
 
 	const spDrawerClass = classNames({
 		"is-preview": preview,
@@ -18,21 +19,43 @@ export default function Edit({ attributes, setAttributes }) {
 
 	const drawerWrapperClasses = classNames({
 		"sp-accessible-drawer-wrapper": true,
-		"is-collapse": collapseState,
+		"is-collapse": !preview ? collapseState : undefined,
 	});
 
 	const slidingDrawerClasses = classNames({
 		"side-drawer": true,
+		"is-open": show,
+		"is-closed": !show,
 	});
 
 	const blockProps = useBlockProps({ className: spDrawerClass });
+
+	useEffect(() => {
+		if (preview) {
+			// set to show preview, initially in a hidden view
+
+			setShowButtonText(false);
+		} else {
+			// make sure no  button text showing.
+			setShowButtonText(true);
+			setCollapseState(false);
+		}
+	}, [preview, setCollapseState, setShow, setShowButtonText]);
+
 	const handleCollapse = () => {
 		setCollapseState(!collapseState);
 	};
 	const handlePreview = () => {
+		if (!preview) {
+		} else {
+		}
+
 		setPreview(!preview);
 	};
 	const handleToggle = () => {
+		if (!show) {
+			setShowButtonText(false);
+		}
 		setShow(!show);
 	};
 	const handleChangeText = (newText) => {
@@ -41,19 +64,45 @@ export default function Edit({ attributes, setAttributes }) {
 		});
 	};
 
+	const handleChangeToggleButton = (newText) => {
+		setAttributes({
+			buttonText: newText,
+		});
+	};
+
+	const hiddenButtonText = () => {
+		setShowButtonText(false);
+	};
+	const visibleButtonText = () => {
+		setShowButtonText(true);
+	};
+
 	return (
 		<div {...blockProps}>
 			<div className={drawerWrapperClasses}>
-				{collapseState ? (
+				{!preview && collapseState ? (
 					<h2 className="collapsed-state">Accessible Drawer - (collapsed)</h2>
 				) : (
 					<>
 						<button
 							id="toggle-drawer"
 							onClick={preview ? handleToggle : undefined}
-							aria-expanded={false}
+							onFocus={preview && !show ? visibleButtonText : undefined}
+							onMouseEnter={preview && !show ? visibleButtonText : undefined}
+							onBlur={preview && !show ? hiddenButtonText : undefined}
+							onMouseLeave={preview && !show ? hiddenButtonText : undefined}
+							aria-expanded={show}
 						>
-							<span>Related Items View</span>
+							<RichText
+								aria-label=""
+								onChange={handleChangeToggleButton}
+								wrapperClassName={
+									preview && !showButtonText ? "srOnly" : undefined
+								}
+								placeholder="Button"
+								value={buttonText}
+								tagName="span"
+							/>
 						</button>
 
 						<div
@@ -63,6 +112,7 @@ export default function Edit({ attributes, setAttributes }) {
 						>
 							<div className="sp-header-wrap">
 								<RichText
+									id="drawer-title"
 									onChange={handleChangeText}
 									placeholder="Enter Title"
 									value={title}
@@ -82,7 +132,7 @@ export default function Edit({ attributes, setAttributes }) {
 					</>
 				)}
 			</div>
-			<button onClick={handlePreview}>Preview</button>
+			<button onClick={handlePreview}>{preview ? "Draft" : "Preview"}</button>
 			{!preview && (
 				<button onClick={handleCollapse}>
 					{collapseState ? "Expand" : "Collapse"}

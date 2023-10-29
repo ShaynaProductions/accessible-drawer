@@ -8,23 +8,22 @@ jQuery(document).ready(function ($) {
 	const buttonText = toggleButton.find("span");
 
 	// set initial
-	pluginWrapper.addClass("is-open");
-	drawer.addClass("is-open");
+	pluginWrapper.addClass("is-closed");
+	drawer.addClass("is-closed");
 	toggleButton.attr("aria-expanded", true);
 	toggleButton.find("span").addClass("srOnly");
 
 	const showDrawer = () => {
 		drawer.removeClass("is-closed");
-		drawer.addClass("is-open");
 		pluginWrapper.removeClass("is-closed");
+		drawer.addClass("is-open");
 		pluginWrapper.addClass("is-open");
 		toggleButton.attr("aria-expanded", true);
-		toggleButton.find("span").addClass("srOnly");
 	};
 	const hideDrawer = () => {
 		drawer.removeClass("is-open");
-		drawer.addClass("is-closed");
 		pluginWrapper.removeClass("is-open");
+		drawer.addClass("is-closed");
 		pluginWrapper.addClass("is-closed");
 		toggleButton.attr("aria-expanded", false);
 		toggleButton.find("span").addClass("srOnly");

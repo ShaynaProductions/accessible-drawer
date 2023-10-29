@@ -1,5 +1,5 @@
 //Initial
-$small-button-width: 35px;
+$small-button-width: 50px;
 body {
 }
 
@@ -40,12 +40,22 @@ main {
 
   & #sliding-drawer {
     border: .125rem solid maroon;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
     background-color: white;
     height: 100%;
   }
 
   & #drawer-title {
-    font-size: 18px;
+    font-size: 1.125rem;
+    font-weight: bold;
+  }
+
+  & .sp-close {
+    background-color: transparent;
+    font-size: 1.125rem;
+    font-weight: bold;
+    border: none;
   }
 }
 
@@ -66,9 +76,9 @@ main {
       margin: 0;
       padding-block: 0;
       padding-inline: 0;
-      position: static;
+      position: relative;
       right: revert;
-      width: $small-button-width;
+      width: calc($small-button-width - 15px);
 
 
       &::before {
@@ -79,25 +89,31 @@ main {
     }
 
     & #sliding-drawer {
-      display: flex;
-      flex-direction: row;
+
+      align-items: center;
       float: right;
-      border: 0.125rem solid black;
 
       & .sp-header-wrap {
-        flex-direction: column;
-      }
-    }
+        float: left;
+        margin-bottom: 1rem;
+        width: 100%;
 
-    & .sp-header-wrap {
+      }
+
       & #drawer-title {
-        font-size: 18px;
-
+        float: left;
         margin: 0;
-        width: auto;
-        max-width: 75%;
+        text-align: center;
+        width: 80%;
+        max-width: 80%;
+      }
+
+      & .sp-close {
+        float: right;
       }
     }
+
+
   }
 
   // drawer closed
@@ -106,26 +122,34 @@ main {
       float: none;
       position: absolute;
       width: $small-button-width;
+      min-width: $small-button-width;
+      white-space: nowrap;
+
+      &::before {
+        content: "\276e";
+        padding-left: 0;
+      }
 
 
       &:hover, &:focus {
         width: auto;
-        white-space: nowrap;
+        padding-right: 5px;
+
+        &::before {
+          content: "\276e";
+          padding-left: 5px;
+        }
+
 
         & span {
           position: relative;
           top: -0.1875rem;
-          left: 0.3125rem;
-          padding-right: 0.3125rem;
+          padding-left: 5px;
+          padding-right: 10px;
         }
+
+
       }
-
-
-      &::before {
-        content: "\276e";
-      }
-
-
     }
 
     & #sliding-drawer {
@@ -139,6 +163,11 @@ main {
     // Desktop
     width: 720px;
     &.is-open { // drawer open
+      button#toggle-drawer {
+        left: 0.9375rem;
+        top: 0.6875rem;
+      }
+
       #sliding-drawer {
         margin: 0 0 0 0;
         padding: 0.5rem;
@@ -150,10 +179,13 @@ main {
     &.is-closed { // drawer closed
       & #drawer {
         & button#toggle-drawer {
-          right: 0;
+          right: 1px;
+          min-width: $small-button-width;
+          //width: $small-button-width;
 
-          &:focus {
+          &:hover, &:active, &:focus {
             width: auto;
+            min-width: $small-button-width;
           }
         }
       }
@@ -167,6 +199,11 @@ main {
 
     // drawer open
     &.is-open {
+      button#toggle-drawer {
+        left: 0.9375rem;
+        top: 0.6875rem;
+      }
+
       #sliding-drawer {
         margin: 0;
         padding: 0.5rem;
@@ -178,7 +215,7 @@ main {
     &.is-closed { // drawer closed
       & #drawer {
         & button#toggle-drawer {
-          right: 0;
+          right: 1px;
 
           &:focus {
             width: auto;
@@ -200,11 +237,14 @@ main {
       }
 
       #sliding-drawer {
-        left: 4.5%;
+        left: -7px;
         margin: 0;
-        max-width: 100%;
-        padding: 0.5rem 0.5rem 0.5rem 1rem;
-        width: 95%;
+        max-width: 94%;
+        padding: 0.5rem;
+        width: 94%;
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        position: relative;
       }
     }
 

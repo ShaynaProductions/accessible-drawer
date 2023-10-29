@@ -1,14 +1,14 @@
 import { InnerBlocks, RichText, useBlockProps } from "@wordpress/block-editor";
 
 export default function save({ attributes }) {
-	const { title } = attributes;
-	const blockProps = useBlockProps.save({ className: "is-closed" });
+	const { buttonText, title } = attributes;
+	const blockProps = useBlockProps.save();
 
 	return (
 		<div {...blockProps}>
 			<div id="drawer" className="sp-accessible-drawer-wrapper">
 				<button id="toggle-drawer" aria-controls="sliding-drawer">
-					<span>Related Items</span>
+					<RichText.Content value={buttonText} tagName="span" />
 				</button>
 				<div
 					id="sliding-drawer"
