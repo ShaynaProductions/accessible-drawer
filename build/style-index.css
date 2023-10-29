@@ -1,0 +1,116 @@
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+main {
+  position: relative;
+  height: 100%;
+}
+
+.wp-block-shayna-prod-accessible-drawer {
+  background-color: lavender;
+}
+.wp-block-shayna-prod-accessible-drawer button#toggle-drawer {
+  font-size: 0.9375rem;
+  font-weight: bold;
+}
+.wp-block-shayna-prod-accessible-drawer button#toggle-drawer::before {
+  font-family: Arial;
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+.wp-block-shayna-prod-accessible-drawer #sliding-drawer {
+  background-color: darkblue;
+}
+
+.wp-block-shayna-prod-accessible-drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.wp-block-shayna-prod-accessible-drawer.is-open {
+  width: 720px;
+}
+.wp-block-shayna-prod-accessible-drawer.is-open button#toggle-drawer {
+  float: left;
+  margin: 0;
+  padding-block: 0;
+  padding-inline: 0;
+  position: static;
+  right: revert;
+  width: 35px;
+}
+.wp-block-shayna-prod-accessible-drawer.is-open button#toggle-drawer::before {
+  content: "❮";
+}
+.wp-block-shayna-prod-accessible-drawer.is-open button#toggle-drawer span {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important; /* 2 */
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important; /* 3 */
+}
+.wp-block-shayna-prod-accessible-drawer.is-open #sliding-drawer {
+  display: flex;
+  flex-direction: row;
+  float: right;
+  border: 0.1rem solid black;
+}
+.wp-block-shayna-prod-accessible-drawer.is-open #sliding-drawer .sp-header-wrap {
+  flex-direction: column;
+}
+.wp-block-shayna-prod-accessible-drawer.is-closed button#toggle-drawer {
+  float: none;
+  position: absolute;
+  width: 35px;
+}
+.wp-block-shayna-prod-accessible-drawer.is-closed button#toggle-drawer:not(:focus, :hover) span {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important; /* 2 */
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important; /* 3 */
+}
+.wp-block-shayna-prod-accessible-drawer.is-closed button#toggle-drawer:hover, .wp-block-shayna-prod-accessible-drawer.is-closed button#toggle-drawer:focus {
+  width: auto;
+  white-space: nowrap;
+}
+.wp-block-shayna-prod-accessible-drawer.is-closed button#toggle-drawer:hover span, .wp-block-shayna-prod-accessible-drawer.is-closed button#toggle-drawer:focus span {
+  position: relative;
+  top: -0.1875rem;
+  left: 0.3125rem;
+  padding-right: 0.3125rem;
+}
+.wp-block-shayna-prod-accessible-drawer.is-closed button#toggle-drawer::before {
+  content: "❮";
+}
+.wp-block-shayna-prod-accessible-drawer.is-closed #sliding-drawer {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  .wp-block-shayna-prod-accessible-drawer.is-open #sliding-drawer {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    width: calc(100% - 35px - 2px);
+  }
+  .wp-block-shayna-prod-accessible-drawer.is-closed #drawer button#toggle-drawer {
+    right: 0;
+  }
+  .wp-block-shayna-prod-accessible-drawer.is-closed #drawer button#toggle-drawer :focus {
+    width: auto;
+  }
+}
+
+/*# sourceMappingURL=style-index.css.map*/
