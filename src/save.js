@@ -6,7 +6,7 @@ export default function save({ attributes }) {
 
 	return (
 		<div {...blockProps}>
-			<div id="drawer" class="sp-accessible-drawer-wrapper">
+			<div id="drawer" className="sp-accessible-drawer-wrapper">
 				<button id="toggle-drawer" aria-controls="sliding-drawer">
 					<span>Related Items</span>
 				</button>
@@ -18,13 +18,9 @@ export default function save({ attributes }) {
 				>
 					<div className="sp-header-wrap">
 						{title ? (
-							<RichText.Content
-								value={title}
-								id={"drawer-title"}
-								tagName="h1"
-							/>
+							<RichText.Content value={title} id="drawer-title" tagName="h1" />
 						) : (
-							<h1>Heading</h1>
+							<h1 id="drawer-title">Heading</h1>
 						)}
 
 						<button className="sp-close" aria-label="Close Dialog">

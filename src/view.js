@@ -8,9 +8,9 @@ jQuery(document).ready(function ($) {
 	const buttonText = toggleButton.find("span");
 
 	// set initial
-	pluginWrapper.addClass("is-closed");
-	drawer.addClass("is-closed");
-	toggleButton.attr("aria-expanded", false);
+	pluginWrapper.addClass("is-open");
+	drawer.addClass("is-open");
+	toggleButton.attr("aria-expanded", true);
 	toggleButton.find("span").addClass("srOnly");
 
 	const showDrawer = () => {
@@ -33,7 +33,7 @@ jQuery(document).ready(function ($) {
 	// Toggle Button should remove the srOnly class on focus or on hover.
 
 	const showButtonText = () => {
-		if (buttonText.hasClass("srOnly")) {
+		if (buttonText.hasClass("srOnly") && pluginWrapper.hasClass("is-closed")) {
 			buttonText.removeClass("srOnly");
 		}
 	};
