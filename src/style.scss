@@ -1,215 +1,269 @@
 //Initial
-$small-button-width: 35px;
+$small-button-width: 50px;
 body {
 }
 
 main {
-	position: relative;
-	height: 100%;
+  position: relative;
+  height: 100%;
 }
 
 .srOnly {
 
-	border: 0 !important;
-	clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
-	-webkit-clip-path: inset(50%) !important;
-	clip-path: inset(50%) !important; /* 2 */
-	height: 1px !important;
-	margin: -1px !important;
-	overflow: hidden !important;
-	padding: 0 !important;
-	position: absolute !important;
-	width: 1px !important;
-	white-space: nowrap !important; /* 3 */
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important; /* 2 */
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important; /* 3 */
 }
 
 // Basic Styling (overrideable)
 .wp-block-shayna-prod-accessible-drawer {
 
 
-	button#toggle-drawer {
-		font-size: 0.9375rem;
-		font-weight: bold;
+  button#toggle-drawer {
+    font-size: 0.9375rem;
+    font-weight: bold;
 
-		&::before {
-			font-family: Arial;
-			font-size: 1.5rem;
-			font-weight: normal;
-		}
-	}
+    &::before {
+      font-family: Arial;
+      font-size: 1.5rem;
+      font-weight: normal;
+    }
+  }
 
-	& #sliding-drawer {
-		border: .125rem solid maroon;
-		background-color: white;
-		height: 100%;
-	}
+  & #sliding-drawer {
+    border: .125rem solid maroon;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
+    background-color: white;
+    height: 100%;
+  }
+
+  & #drawer-title {
+    font-size: 1.125rem;
+    font-weight: bold;
+  }
+
+  & .sp-close {
+    background-color: transparent;
+    font-size: 1.125rem;
+    font-weight: bold;
+    border: none;
+  }
 }
 
 // Basic Styling (high specificity)
 .wp-block-shayna-prod-accessible-drawer {
-	// All
-	position: absolute;
-	top: 0;
-	right: 0;
+  // All
+  position: absolute;
+  top: 0;
+  right: 0;
 
 
-	// drawer open
-	&.is-open {
+  // drawer open
+  &.is-open {
 
 
-		& button#toggle-drawer {
-			float: left;
-			margin: 0;
-			padding-block: 0;
-			padding-inline: 0;
-			position: static;
-			right: revert;
-			width: $small-button-width;
+    & button#toggle-drawer {
+      float: left;
+      margin: 0;
+      padding-block: 0;
+      padding-inline: 0;
+      position: relative;
+      right: revert;
+      width: calc($small-button-width - 15px);
 
 
-			&::before {
-				content: "\276E";
-			}
+      &::before {
+        content: "\276E";
+      }
 
 
-		}
+    }
 
-		& #sliding-drawer {
-			display: flex;
-			flex-direction: row;
-			float: right;
-			border: 0.125rem solid black;
+    & #sliding-drawer {
 
-			& .sp-header-wrap {
-				flex-direction: column;
-			}
-		}
-	}
+      align-items: center;
+      float: right;
 
-	// drawer closed
-	&.is-closed {
-		& button#toggle-drawer {
-			float: none;
-			position: absolute;
-			width: $small-button-width;
+      & .sp-header-wrap {
+        float: left;
+        margin-bottom: 1rem;
+        width: 100%;
 
-	
-			&:hover, &:focus {
-				width: auto;
-				white-space: nowrap;
+      }
 
-				& span {
-					position: relative;
-					top: -0.1875rem;
-					left: 0.3125rem;
-					padding-right: 0.3125rem;
-				}
-			}
+      & #drawer-title {
+        float: left;
+        margin: 0;
+        text-align: center;
+        width: 80%;
+        max-width: 80%;
+      }
+
+      & .sp-close {
+        float: right;
+      }
+    }
 
 
-			&::before {
-				content: "\276e";
-			}
+  }
+
+  // drawer closed
+  &.is-closed {
+    & button#toggle-drawer {
+      float: none;
+      position: absolute;
+      width: $small-button-width;
+      min-width: $small-button-width;
+      white-space: nowrap;
+
+      &::before {
+        content: "\276e";
+        padding-left: 0;
+      }
 
 
-		}
+      &:hover, &:focus {
+        width: auto;
+        padding-right: 5px;
 
-		& #sliding-drawer {
-			display: none;
-		}
-	}
-
-
-	// Media Queries
-	@media screen and (min-width: 1024px) {
-		// Desktop
-		width: 720px;
-		&.is-open { // drawer open
-			#sliding-drawer {
-				margin: 0 0 0 0;
-				padding: 0.5rem;
-				width: calc(100% - ($small-button-width + 20px));
-			}
-		}
+        &::before {
+          content: "\276e";
+          padding-left: 5px;
+        }
 
 
-		&.is-closed { // drawer closed
-			& #drawer {
-				& button#toggle-drawer {
-					right: 0;
-
-					&:focus {
-						width: auto;
-					}
-				}
-			}
-		}
-
-	}
-	@media screen and (min-width: 768px) and (max-width: 1024px) {
-		// Tablet
-
-		width: 720px;
-
-		// drawer open
-		&.is-open {
-			#sliding-drawer {
-				margin: 0;
-				padding: 0.5rem;
-				width: calc(100% - ($small-button-width + 20px));
-			}
-		}
-
-		// drawer closed
-		&.is-closed { // drawer closed
-			& #drawer {
-				& button#toggle-drawer {
-					right: 0;
-
-					&:focus {
-						width: auto;
-					}
-				}
-			}
-		}
-
-	}
-
-	@media screen and (max-width: 767px) {
-		// Mobile
-		width: calc(100%); // Modify this to take up entire screen.;
-
-		// drawer open
-		&.is-open {
-			& button#toggle-drawer {
-				display: none;
-			}
-
-			#sliding-drawer {
-				left: 4.5%;
-				margin: 0;
-				max-width: 100%;
-				padding: 0.5rem 0.5rem 0.5rem 1rem;
-				width: 95%;
-			}
-		}
-
-		// drawer closed
-		&.is-closed {
-			& #drawer {
-
-				& button#toggle-drawer {
-					right: 0;
-
-					&:focus {
-						width: auto;
-					}
-				}
-			}
+        & span {
+          position: relative;
+          top: -0.1875rem;
+          padding-left: 5px;
+          padding-right: 10px;
+        }
 
 
-		}
-	}
+      }
+    }
+
+    & #sliding-drawer {
+      display: none;
+    }
+  }
+
+
+  // Media Queries
+  @media screen and (min-width: 1024px) {
+    // Desktop
+    width: 720px;
+    &.is-open { // drawer open
+      button#toggle-drawer {
+        left: 0.9375rem;
+        top: 0.6875rem;
+      }
+
+      #sliding-drawer {
+        margin: 0 0 0 0;
+        padding: 0.5rem;
+        width: calc(100% - ($small-button-width + 20px));
+      }
+    }
+
+
+    &.is-closed { // drawer closed
+      & #drawer {
+        & button#toggle-drawer {
+          right: 1px;
+          min-width: $small-button-width;
+          //width: $small-button-width;
+
+          &:hover, &:active, &:focus {
+            width: auto;
+            min-width: $small-button-width;
+          }
+        }
+      }
+    }
+
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    // Tablet
+
+    width: 720px;
+
+    // drawer open
+    &.is-open {
+      button#toggle-drawer {
+        left: 0.9375rem;
+        top: 0.6875rem;
+      }
+
+      #sliding-drawer {
+        margin: 0;
+        padding: 0.5rem;
+        width: calc(100% - ($small-button-width + 20px));
+      }
+    }
+
+    // drawer closed
+    &.is-closed { // drawer closed
+      & #drawer {
+        & button#toggle-drawer {
+          right: 1px;
+
+          &:focus {
+            width: auto;
+          }
+        }
+      }
+    }
+
+  }
+
+  @media screen and (max-width: 767px) {
+    // Mobile
+    width: calc(100%); // Modify this to take up entire screen.;
+
+    // drawer open
+    &.is-open {
+      & button#toggle-drawer {
+        display: none;
+      }
+
+      #sliding-drawer {
+        left: -7px;
+        margin: 0;
+        max-width: 94%;
+        padding: 0.5rem;
+        width: 94%;
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        position: relative;
+      }
+    }
+
+    // drawer closed
+    &.is-closed {
+      & #drawer {
+
+        & button#toggle-drawer {
+          right: 0;
+
+          &:focus {
+            width: auto;
+          }
+        }
+      }
+
+
+    }
+  }
 
 }
 

@@ -10,21 +10,20 @@ jQuery(document).ready(function ($) {
 	// set initial
 	pluginWrapper.addClass("is-closed");
 	drawer.addClass("is-closed");
-	toggleButton.attr("aria-expanded", false);
+	toggleButton.attr("aria-expanded", true);
 	toggleButton.find("span").addClass("srOnly");
 
 	const showDrawer = () => {
 		drawer.removeClass("is-closed");
-		drawer.addClass("is-open");
 		pluginWrapper.removeClass("is-closed");
+		drawer.addClass("is-open");
 		pluginWrapper.addClass("is-open");
 		toggleButton.attr("aria-expanded", true);
-		toggleButton.find("span").addClass("srOnly");
 	};
 	const hideDrawer = () => {
 		drawer.removeClass("is-open");
-		drawer.addClass("is-closed");
 		pluginWrapper.removeClass("is-open");
+		drawer.addClass("is-closed");
 		pluginWrapper.addClass("is-closed");
 		toggleButton.attr("aria-expanded", false);
 		toggleButton.find("span").addClass("srOnly");
@@ -33,7 +32,7 @@ jQuery(document).ready(function ($) {
 	// Toggle Button should remove the srOnly class on focus or on hover.
 
 	const showButtonText = () => {
-		if (buttonText.hasClass("srOnly")) {
+		if (buttonText.hasClass("srOnly") && pluginWrapper.hasClass("is-closed")) {
 			buttonText.removeClass("srOnly");
 		}
 	};
