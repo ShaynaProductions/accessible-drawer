@@ -6,6 +6,7 @@ jQuery(document).ready(function ($) {
 	const toggleButton = $("#toggle-drawer");
 	const closeButton = $(".sp-close");
 	const buttonText = toggleButton.find("span");
+	const drawerOverlay = $("#drawer-overlay");
 
 	// set initial
 	pluginWrapper.addClass("is-closed");
@@ -64,6 +65,11 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
+	//Overlay
+	drawerOverlay.on("click", function () {
+		hideDrawer();
+	});
+
 	// internal Close Button
 	closeButton.on("click", function () {
 		hideDrawer();
@@ -74,4 +80,5 @@ jQuery(document).ready(function ($) {
 	console.log("drawer: ", drawer);
 	console.log("drawerTitleWrapper: ", drawerTitleWrapper);
 	console.log("toggleButton: ", toggleButton);
+	console.log("drawerOverlay: ", drawerOverlay);
 });

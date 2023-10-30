@@ -30,6 +30,7 @@ export default function save({ attributes }) {
 					<InnerBlocks.Content />
 				</div>
 			</div>
+			<div id="drawer-overlay" className="sp-accessible-drawer-overlay"></div>
 		</div>
 	);
 }
