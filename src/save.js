@@ -8,7 +8,11 @@ export default function save({ attributes }) {
 		<div {...blockProps}>
 			<div id="drawer" className="sp-accessible-drawer-wrapper">
 				<button id="toggle-drawer" aria-controls="sliding-drawer">
-					<RichText.Content value={buttonText} tagName="span" />
+					<RichText.Content
+						className="srOnly"
+						value={buttonText}
+						tagName="span"
+					/>
 				</button>
 				<div
 					id="sliding-drawer"
@@ -30,6 +34,7 @@ export default function save({ attributes }) {
 					<InnerBlocks.Content />
 				</div>
 			</div>
+			<div id="drawer-overlay" className="sp-accessible-drawer-overlay"></div>
 		</div>
 	);
 }

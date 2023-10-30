@@ -6,12 +6,12 @@ jQuery(document).ready(function ($) {
 	const toggleButton = $("#toggle-drawer");
 	const closeButton = $(".sp-close");
 	const buttonText = toggleButton.find("span");
+	const drawerOverlay = $("#drawer-overlay");
 
 	// set initial
 	pluginWrapper.addClass("is-closed");
 	drawer.addClass("is-closed");
 	toggleButton.attr("aria-expanded", true);
-	toggleButton.find("span").addClass("srOnly");
 
 	const showDrawer = () => {
 		drawer.removeClass("is-closed");
@@ -19,6 +19,7 @@ jQuery(document).ready(function ($) {
 		drawer.addClass("is-open");
 		pluginWrapper.addClass("is-open");
 		toggleButton.attr("aria-expanded", true);
+		toggleButton.find("span").addClass("srOnly");
 	};
 	const hideDrawer = () => {
 		drawer.removeClass("is-open");
@@ -27,6 +28,7 @@ jQuery(document).ready(function ($) {
 		pluginWrapper.addClass("is-closed");
 		toggleButton.attr("aria-expanded", false);
 		toggleButton.find("span").addClass("srOnly");
+		toggleButton.focus();
 	};
 
 	// Toggle Button should remove the srOnly class on focus or on hover.
@@ -64,14 +66,20 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
+	//Overlay
+	drawerOverlay.on("click", function () {
+		hideDrawer();
+	});
+
 	// internal Close Button
 	closeButton.on("click", function () {
 		hideDrawer();
 	});
-	console.log("Button Span: ", buttonText);
-	console.log("close button: ", closeButton);
-	console.log("wrapper: ", drawerWrapper);
-	console.log("drawer: ", drawer);
-	console.log("drawerTitleWrapper: ", drawerTitleWrapper);
-	console.log("toggleButton: ", toggleButton);
+
+	// Keyboard Events on Overlay and shown drawer.
+	pluginWrapper.on("keydown", function (event) {
+		if (event.keyCode === 27) {
+			hideDrawer();
+		}
+	});
 });
