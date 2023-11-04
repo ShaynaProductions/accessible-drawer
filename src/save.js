@@ -19,6 +19,8 @@ export default function save({ attributes }) {
 					className="side-drawer"
 					role="dialog"
 					aria-labelledby="drawer-title"
+					style="display:none"
+
 				>
 					<div className="sp-header-wrap">
 						{title ? (

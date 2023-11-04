@@ -55,13 +55,18 @@ body {
       width: 100%;
     }
 
-    &.is-open {
-      & #sliding-drawer {
-        display: block;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-      }
-    }
+		&.is-open {
+			& button#toggle-drawer {
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+			}
+
+			& #sliding-drawer {
+				display: block;
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+			}
+		}
 
 
   }
