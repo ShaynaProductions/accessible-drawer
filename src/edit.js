@@ -7,7 +7,7 @@ export default function Edit({ attributes, setAttributes }) {
 	const { buttonText, title } = attributes;
 	const [show, setShow] = useState(true);
 	const [preview, setPreview] = useState(false);
-	const [collapseState, setCollapseState] = useState(false);
+	const [collapseState, setCollapseState] = useState(true);
 	const [showButtonText, setShowButtonText] = useState(true);
 
 	const spDrawerClass = classNames({

@@ -10,19 +10,20 @@ export default function save({ attributes }) {
 				<button id="toggle-drawer" aria-controls="sliding-drawer">
 					<RichText.Content
 						className="srOnly"
-						value={buttonText}
 						tagName="span"
+						value={buttonText}
 					/>
 				</button>
 				<div
 					id="sliding-drawer"
 					className="side-drawer"
 					role="dialog"
+					style="display:none"
 					aria-labelledby="drawer-title"
 				>
 					<div className="sp-header-wrap">
 						{title ? (
-							<RichText.Content value={title} id="drawer-title" tagName="h1" />
+							<RichText.Content id="drawer-title" tagName="h1" value={title} />
 						) : (
 							<h1 id="drawer-title">Heading</h1>
 						)}
