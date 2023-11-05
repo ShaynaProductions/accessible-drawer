@@ -1,90 +1,90 @@
 .is-root-container {
-  position: static;
+	position: static;
 }
 
 body {
-  position: relative;
+	position: relative;
 }
 
 .wp-block-shayna-prod-accessible-drawer h2.collapsed-state {
-  font-size: 1.125rem;
-  font-weight: bold;
+	font-size: 1.125rem;
+	font-weight: bold;
 
 }
 
 .wp-block-shayna-prod-accessible-drawer {
 
 
-  &.is-preview {
-    & .sp-accessible-drawer-wrapper {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
+	&.is-preview {
+		& .sp-accessible-drawer-wrapper {
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
 
-    & .block-list-appender {
-      display: none;
-    }
-  }
+		& .block-list-appender {
+			display: none;
+		}
+	}
 
-  &.is-draft {
-    position: static;
+	&.is-draft {
+		position: static;
 
-    & button#toggle-drawer {
-      float: none;
-      position: static;
-      width: auto;
-      margin-bottom: .5rem;
+		& button#toggle-drawer {
+			float: none;
+			margin-bottom: .5rem;
+			position: static;
+			width: auto;
 
-      &::before {
+			&::before {
 
-        padding-left: 5px;
-      }
+				padding-left: 5px;
+			}
 
-      & span {
-        position: relative;
-        padding-left: 5px;
-        padding-right: 10px;
-        top: -0.1875rem;
-      }
-    }
+			& span {
+				padding-left: 5px;
+				padding-right: 10px;
+				position: relative;
+				top: -0.1875rem;
+			}
+		}
 
-    & #sliding-drawer {
-      float: left;
-      position: static;
-      width: 100%;
-    }
+		& #sliding-drawer {
+			float: left;
+			position: static;
+			width: 100%;
+		}
 
 		&.is-open {
 			& button#toggle-drawer {
-				border-top-left-radius: 0;
 				border-bottom-left-radius: 0;
+				border-top-left-radius: 0;
 			}
 
 			& #sliding-drawer {
-				display: block;
-				border-top-left-radius: 0;
 				border-bottom-left-radius: 0;
+				border-top-left-radius: 0;
+				display: block;
 			}
 		}
 
 
-  }
+	}
 
-  @media screen and (min-width: 1024px) {
-    // Desktop
-    &.is-preview {
-      & .sp-accessible-drawer-wrapper {
-        right: -35%;
-      }
-    }
-  }
+	@media screen and (min-width: 1024px) {
+		// Desktop
+		&.is-preview {
+			& .sp-accessible-drawer-wrapper {
+				right: -35%;
+			}
+		}
+	}
 
-  @media screen and (min-width: 768px) and (max-width: 1024px) {
-    // Tablet
-  }
+	@media screen and (min-width: 768px) and (max-width: 1024px) {
+		// Tablet
+	}
 
-  @media screen and (max-width: 767px) {
+	@media screen and (max-width: 767px) {
 
-  }
+	}
 }

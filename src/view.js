@@ -1,11 +1,10 @@
 jQuery(document).ready(function ($) {
+	const closeButton = $(".sp-close");
 	const pluginWrapper = $(".wp-block-shayna-prod-accessible-drawer");
 	const drawer = $("#sliding-drawer");
-	const toggleButton = $("#toggle-drawer");
-	const closeButton = $(".sp-close");
-	const buttonText = toggleButton.find("span");
 	const drawerOverlay = $("#drawer-overlay");
-
+	const toggleButton = $("#toggle-drawer");
+	const toggleButtonText = toggleButton.find("span");
 	const introContainer = $("main .intro-accordion");
 	const afterContainer = $("main .after-accordion");
 
@@ -14,7 +13,7 @@ jQuery(document).ready(function ($) {
 	pluginWrapper.addClass("is-closed");
 	drawer.addClass("is-closed");
 	toggleButton.attr("aria-expanded", true);
-	drawer.removeAttr('style');
+	drawer.removeAttr("style");
 	introContainer.addClass("drawer-closed");
 	afterContainer.addClass("drawer-closed");
 
@@ -30,8 +29,9 @@ jQuery(document).ready(function ($) {
 		pluginWrapper.addClass("is-open");
 		toggleButton.attr("aria-expanded", true);
 		toggleButton.find("span").addClass("srOnly");
-		closeButton.focus(() => {closeButton.css("outline", " -webkit-focus-ring-color auto 1px")});
-
+		closeButton.focus(() => {
+			closeButton.css("outline", " -webkit-focus-ring-color auto 1px");
+		});
 	};
 	const hideDrawer = () => {
 		drawer.attr("aria-hidden", true);
@@ -39,7 +39,7 @@ jQuery(document).ready(function ($) {
 		drawer.addClass("is-closed");
 		pluginWrapper.removeClass("is-open");
 		pluginWrapper.addClass("is-closed");
-		introContainer.removeClass("drawer-open")
+		introContainer.removeClass("drawer-open");
 		introContainer.addClass("drawer-closed");
 		afterContainer.removeClass("drawer-open");
 		afterContainer.addClass("drawer-closed");
@@ -51,13 +51,16 @@ jQuery(document).ready(function ($) {
 	// Toggle Button should remove the srOnly class on focus or on hover.
 
 	const showButtonText = () => {
-		if (buttonText.hasClass("srOnly") && pluginWrapper.hasClass("is-closed")) {
-			buttonText.removeClass("srOnly");
+		if (
+			toggleButtonText.hasClass("srOnly") &&
+			pluginWrapper.hasClass("is-closed")
+		) {
+			toggleButtonText.removeClass("srOnly");
 		}
 	};
 	const hideButtonText = () => {
-		if (!buttonText.hasClass("srOnly")) {
-			buttonText.addClass("srOnly");
+		if (!toggleButtonText.hasClass("srOnly")) {
+			toggleButtonText.addClass("srOnly");
 		}
 	};
 
