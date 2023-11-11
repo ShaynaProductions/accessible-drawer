@@ -80,7 +80,7 @@ export default function Edit({ attributes, setAttributes }) {
 	return (
 		<div {...blockProps}>
 			<div className={drawerWrapperClasses}>
-				{!preview && collapseState ? (
+				{!preview && !collapseState ? (
 					<h2 className="collapsed-state">Accessible Drawer - (collapsed)</h2>
 				) : (
 					<>
@@ -135,7 +135,7 @@ export default function Edit({ attributes, setAttributes }) {
 			<button onClick={handlePreview}>{preview ? "Draft" : "Preview"}</button>
 			{!preview && (
 				<button onClick={handleCollapse}>
-					{collapseState ? "Expand" : "Collapse"}
+					{collapseState ? "Collapse" : "Expand"}
 				</button>
 			)}
 		</div>

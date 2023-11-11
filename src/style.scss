@@ -1,7 +1,12 @@
 //Initial
 $small-button-width: 50px;
-header#site-header {
+header#site-header,
+footer li.elementor-icon-list-item {
 	z-index: 0;
+}
+
+footer .elementor-widget li.elementor-icon-list-item {
+	position: static;
 }
 
 
@@ -148,17 +153,7 @@ header#site-header {
 		}
 
 		& #sliding-drawer {
-			border: 0 !important;
-			clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
-			-webkit-clip-path: inset(50%) !important;
-			clip-path: inset(50%) !important; /* 2 */
-			height: 1px !important;
-			margin: -1px !important;
-			overflow: hidden !important;
-			padding: 0 !important;
-			position: absolute !important;
-			width: 1px !important;
-			white-space: nowrap !important; /* 3 */
+			display: none;
 		}
 
 		& #drawer-overlay {
@@ -247,7 +242,7 @@ header#site-header {
 	@media screen and (max-width: 767px) {
 		// Mobile
 		top: 50px;
-		right: 0;
+		right: 21px;
 		width: calc(100%); // Modify this to take up entire screen.;
 
 		// drawer open
